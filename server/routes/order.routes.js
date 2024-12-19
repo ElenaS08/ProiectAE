@@ -41,7 +41,7 @@ router.get('/', async (req, res) => {
     const orders = await user.getOrders({
         include: [{
             model: Product,
-            through: { attributes: [] }, // Ascunde câmpurile tabelului de legătură
+            through: { attributes: [] },
         }]
     });
 

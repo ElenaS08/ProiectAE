@@ -7,9 +7,9 @@ const router = express.Router();
 
 Product.belongsToMany(Order, { through: "OrderProduct" });
 Order.belongsToMany(Product, { through: "OrderProduct" });
-// Adaugă un produs într-o comandă
+
 router.post('/', async (req, res) => {
-    try {
+    try {cd 
         const { orderId, productId, quantity } = req.body;
 
         const order = await Order.findByPk(orderId);
@@ -19,7 +19,6 @@ router.post('/', async (req, res) => {
             return res.status(404).json({ success: false, message: 'Order or product not found' });
         }
 
-        // Adaugă produsul la comandă (sau actualizează cantitatea dacă produsul există deja în comandă)
         await OrderProduct.create({ orderId, productId, quantity });
 
         res.status(201).json({ success: true, message: 'Product added to order' });
@@ -28,7 +27,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-// Șterge un produs dintr-o comandă
+
 router.delete('/:orderId/:productId', async (req, res) => {
     try {
         const { orderId, productId } = req.params;
@@ -49,7 +48,7 @@ router.delete('/:orderId/:productId', async (req, res) => {
     }
 });
 
-// Actualizează cantitatea unui produs într-o comandă
+
 router.put('/:orderId/:productId', async (req, res) => {
     try {
         const { orderId, productId } = req.params;

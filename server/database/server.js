@@ -6,7 +6,7 @@ const sequelize = new Sequelize({
 })
 
 sequelize
-    .sync({ force: false })  //schimb la `true` pentru a forța re-crearea tabelelor în timpul dezvoltării
+    .sync({ force: false })  
     .then(() => {
         console.log('Models successfully synced.');
     })
