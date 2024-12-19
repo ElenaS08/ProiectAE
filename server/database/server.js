@@ -4,12 +4,15 @@ const sequelize = new Sequelize({
     storage: 'database/db.sqlite',
     logging: false
 })
+
 sequelize
-    .sync()
+    .sync({ force: false })  //schimb la `true` pentru a forța re-crearea tabelelor în timpul dezvoltării
     .then(() => {
-        console.log('Models sucessfully (re)created.');
+        console.log('Models successfully synced.');
     })
     .catch((err) => {
-        console.log(err);
+        console.log('Error syncing models:', err);
     })
+
+
 module.exports = { sequelize }

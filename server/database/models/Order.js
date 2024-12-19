@@ -1,6 +1,7 @@
 const { sequelize } = require("../server");
 const { DataTypes } = require('sequelize');
 
+
 const Order = sequelize.define('Order', {
     id: {
         type: DataTypes.INTEGER,
@@ -48,6 +49,7 @@ const Order = sequelize.define('Order', {
     userId: {
         type: DataTypes.INTEGER
     },
-})
+});
+
 
 module.exports = Order;
