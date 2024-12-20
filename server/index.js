@@ -22,7 +22,9 @@ app.get('/', (req, res) => {
 
 app.use(morgan('dev'))
 app.use(cors({
-    origin: 'http://127.0.0.1:5500'
+    origin: ['http://localhost:3000', 'http://127.0.0.1:5500'], // Adaugă URL-urile necesare
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permite metodele necesare
+    credentials: true, // Dacă ai nevoie de cookie-uri
 }));
 app.use(express.json());
 app.use('/users', userRoutes);
